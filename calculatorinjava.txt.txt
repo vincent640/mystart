@@ -1,0 +1,77 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package calculator1;
+
+/**
+ *
+ * @author user
+ */
+import java.io.*;
+import javax.swing.JOptionPane;
+public class Calculator1 {
+    private double x;
+    private double y;
+    public double getX(String x){
+        return this.x = Double.parseDouble(x);
+    }
+    public double getY(String y){
+        return this.y = Double.parseDouble(y);
+    }
+    public double add(){
+        return x+y;
+    }
+    public double subtract (){
+        return x-y;
+    }
+    public double multiply(){
+        return x*y;
+    }
+    public double divide() throws IllegalArgumentException{
+        if (y == 0){
+            throw new IllegalArgumentException("Attempt to divide by zero");
+        }
+        return x/y;
+    }
+    public int remainder()throws IllegalArgumentException{
+        if (y == 0){
+            throw new IllegalArgumentException("Attempt to divide by zero");
+        }
+        return (int)(x%y);
+    }
+    public void showResult(){//throws IllegalArgumentException{
+       /* System.out.println("X = " + x);
+        System.out.println("Y = " + y);
+        System.out.println("X + Y: " + this.add());
+        System.out.println("X - Y: " + this.subtract());
+        System.out.println("X * Y: " + this.multiply());
+        System.out.println("X / Y: " + this.divide());
+        System.out.println("X % Y: "+ this.remainder()); */
+        JOptionPane.showMessageDialog(null, " Value of X: "+ this.x +
+                "\n Value of Y: "+ this.y +
+                "\n X + Y: " + this.add() +
+                "\n X - Y: " + this.subtract()+
+                "\n X * Y: " + this.multiply()+
+                "\n X / Y: " + this.divide() +
+                "\n X % Y: " + this.remainder()); 
+    }
+    
+    public static void main(String[] args){// throws IllegalArgumentException{
+        //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        Calculator1 calc=new Calculator1();
+        try{                
+            //System.out.print("Enter value of x: ");
+            //calc.getX(in.readLine());
+            calc.getX(JOptionPane.showInputDialog(null, "Enter value of X "));
+            //System.out.print("Enter value of y: ");
+            //calc.getY(in.readLine());
+            calc.getY(JOptionPane.showInputDialog(null, "Enter value of Y "));
+            calc.showResult();
+        }
+        catch (Exception e){
+         //System.out.println("Error: " + e.getMessage());
+         JOptionPane.showMessageDialog(null,"Error: " + e.getMessage());
+        }        
+    }
+}
